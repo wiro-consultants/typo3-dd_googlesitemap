@@ -185,7 +185,7 @@ class tx_ddgooglesitemap_pages extends tx_ddgooglesitemap_generator {
 	 * @return bool
 	 */
 	protected function shouldIncludePageInSitemap(array $pageInfo) {
-		return !$pageInfo['no_search'] && !in_array($pageInfo['doktype'], $this->excludedPageTypes);
+		return (isset($pageInfo['no_search']) && (boolean)$pageInfo['no_search'] == 0 && !in_array($pageInfo['doktype'], $this->excludedPageTypes));
 	}
 
 	/**
